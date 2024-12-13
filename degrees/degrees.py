@@ -91,7 +91,8 @@ def shortest_path(source, target):
 
     If no possible path, returns None.
     """
-
+    if source == target:
+        return []
     # Keep track of number of states explored
     num_explored = 0
 
@@ -103,7 +104,7 @@ def shortest_path(source, target):
 
     while True:
         if frontier.empty():
-            raise Exception('no solution')
+            raise None
 
         node = frontier.remove()
         num_explored += 1
