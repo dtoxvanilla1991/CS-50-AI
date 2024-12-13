@@ -91,11 +91,10 @@ def shortest_path(source, target):
 
     If no possible path, returns None.
     """
-    if source == target:
-        return []
     # Keep track of number of states explored
     num_explored = 0
-
+    if source == target:
+        return []
     start = Node(state=source, parent=None, action=None)
     frontier = QueueFrontier()
     frontier.add(start)
@@ -104,8 +103,7 @@ def shortest_path(source, target):
 
     while True:
         if frontier.empty():
-            raise None
-
+            return None
         node = frontier.remove()
         num_explored += 1
         explored.add(node.state)
