@@ -22,22 +22,41 @@ def player(board):
     """
     Returns player who has the next turn on a board.
     """
-    raise NotImplementedError
+    x_count = 0
+    o_count = 0
 
+    for row in board:
+        x_count += row.count(X)
+        o_count += row.count(O)
+    
+    if x_count > o_count:
+        return O
+    else:
+        return X
 
 def actions(board):
     """
     Returns set of all possible actions (i, j) available on the board.
     """
-    raise NotImplementedError
-
+    available_actions = set()
+    for row in range(len(board)):
+        for col in range(len(board[row])):
+            if board[row][col] == EMPTY:
+                available_actions.add((row, col))
+    
+    return available_actions
 
 def result(board, action):
     """
     Returns the board that results from making move (i, j) on the board.
     """
-    raise NotImplementedError
-
+    if action not in action(board):
+        raise Exception("Invalid action")
+    
+    row, col = action
+    board_copy = [row.copy() for row in board]
+    board_copy[row][col] = player(board)
+    return board_copy
 
 def winner(board):
     """
