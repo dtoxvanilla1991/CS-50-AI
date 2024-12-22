@@ -134,7 +134,7 @@ def joint_probability(people, one_gene, two_genes, have_trait):
         if not mother and not father:
             person_prob *= PROBS["gene"][person_genes]
 
-        # Otherwise need to calculate probabilit of num_genes from parents:
+        # Otherwise need to calculate probability of num_genes from parents:
         else:
             mother_prob = inherit_prob(mother, one_gene, two_genes)
             father_prob = inherit_prob(father, one_gene, two_genes)
